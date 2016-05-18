@@ -67,8 +67,10 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
+    curl --silent --location https://rpm.nodesource.com/setup | bash -
+
     sudo yum update -y
-    sudo yum install -y git gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel wget
+    sudo yum install -y git gcc bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel wget nodejs
     sudo yum groupinstall -y 'Development Tools'
 
     git clone git://github.com/sstephenson/rbenv.git /usr/local/rbenv
